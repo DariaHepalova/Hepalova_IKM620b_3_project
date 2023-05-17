@@ -25,17 +25,6 @@ namespace Hepalova_IKM620b_3_project
             MessageBox.Show("Минуло 25 секунд", "Увага");// Виведення повідомлення           "Минуло 25 секунд" на екран
             tClock.Start();
         }
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            MajorObject = new MajorWork();
-            MajorObject.SetTime();
-            MajorObject.Modify = false;// заборона запису
-            About A = new About(); // створення форми About
-            A.tAbout.Start();
-            A.ShowDialog(); // відображення діалогового вікна About
-            MajorObject = new MajorWork();
-            this.Mode = true;
-        }
         private void bStart_Click(object sender, EventArgs e)
         {
             if (Mode)
@@ -75,13 +64,22 @@ namespace Hepalova_IKM620b_3_project
                 e.KeyChar = (char)0;
             }
         }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            MajorObject = new MajorWork();
+            MajorObject.SetTime();
+            MajorObject.Modify = false;// заборона запису
+            About A = new About(); // створення форми About
+            A.tAbout.Start();
+            A.ShowDialog(); // відображення діалогового вікна About
+            this.Mode = true;
+        }
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
             string s;
             s = (System.DateTime.Now - MajorObject.GetTime()).ToString();
-            MessageBox.Show(s, "Час роботи програми"); // Виведення часу роботи програми і повідомлення "Час роботи програми" на екран
+            MessageBox.Show(s, "Час роботи програми"); // Виведення часу роботи програми іповідомлення "Час роботи програми" на екран
         }
-
         private void вихідToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
@@ -150,6 +148,11 @@ namespace Hepalova_IKM620b_3_project
             if (MajorObject.Modify)
                 if (MessageBox.Show("Дані не були збережені. Продовжити вихід?", "УВАГА", MessageBoxButtons.YesNo) == DialogResult.No)
                     e.Cancel = true; // припинити закриття
+        }
+
+        private void bSearch_Click(object sender, EventArgs e)
+        {
+            MajorObject.Find(bSearch.Text); //пошук
         }
     }
 }

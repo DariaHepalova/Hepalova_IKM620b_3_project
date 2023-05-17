@@ -51,13 +51,17 @@
             this.проПрограмуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sfdSave = new System.Windows.Forms.SaveFileDialog();
             this.ofdOpen = new System.Windows.Forms.OpenFileDialog();
+            this.dgwOpen = new System.Windows.Forms.DataGridView();
+            this.bSearch = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgwOpen)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(254, 93);
+            this.label1.Location = new System.Drawing.Point(91, 88);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 0;
@@ -65,7 +69,7 @@
             // 
             // bStart
             // 
-            this.bStart.Location = new System.Drawing.Point(257, 209);
+            this.bStart.Location = new System.Drawing.Point(94, 204);
             this.bStart.Name = "bStart";
             this.bStart.Size = new System.Drawing.Size(75, 23);
             this.bStart.TabIndex = 1;
@@ -81,7 +85,7 @@
             // tbInput
             // 
             this.tbInput.Enabled = false;
-            this.tbInput.Location = new System.Drawing.Point(257, 149);
+            this.tbInput.Location = new System.Drawing.Point(94, 144);
             this.tbInput.Name = "tbInput";
             this.tbInput.Size = new System.Drawing.Size(100, 20);
             this.tbInput.TabIndex = 2;
@@ -126,46 +130,46 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(162, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // відкритиToolStripMenuItem
             // 
             this.відкритиToolStripMenuItem.Name = "відкритиToolStripMenuItem";
             this.відкритиToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.відкритиToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.відкритиToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.відкритиToolStripMenuItem.Text = "Відкрити";
             this.відкритиToolStripMenuItem.Click += new System.EventHandler(this.відкритиToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(162, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
             // 
             // зберегтиToolStripMenuItem
             // 
             this.зберегтиToolStripMenuItem.Name = "зберегтиToolStripMenuItem";
             this.зберегтиToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.зберегтиToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.зберегтиToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.зберегтиToolStripMenuItem.Text = "Зберегти";
             this.зберегтиToolStripMenuItem.Click += new System.EventHandler(this.зберегтиToolStripMenuItem_Click);
             // 
             // зберегтиЯкToolStripMenuItem
             // 
             this.зберегтиЯкToolStripMenuItem.Name = "зберегтиЯкToolStripMenuItem";
-            this.зберегтиЯкToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.зберегтиЯкToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.зберегтиЯкToolStripMenuItem.Text = "Зберегти як";
             this.зберегтиЯкToolStripMenuItem.Click += new System.EventHandler(this.зберегтиЯкToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(162, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
             // 
             // вихідToolStripMenuItem
             // 
             this.вихідToolStripMenuItem.Name = "вихідToolStripMenuItem";
             this.вихідToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
-            this.вихідToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.вихідToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.вихідToolStripMenuItem.Text = "Вихід";
             this.вихідToolStripMenuItem.Click += new System.EventHandler(this.вихідToolStripMenuItem_Click);
             // 
@@ -223,11 +227,39 @@
             this.ofdOpen.FileName = "openFileDialog1";
             this.ofdOpen.Filter = "рабочие файлы|*.SoM|Все файлы|*.*";
             // 
+            // dgwOpen
+            // 
+            this.dgwOpen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgwOpen.Location = new System.Drawing.Point(323, 88);
+            this.dgwOpen.Name = "dgwOpen";
+            this.dgwOpen.Size = new System.Drawing.Size(240, 150);
+            this.dgwOpen.TabIndex = 4;
+            // 
+            // bSearch
+            // 
+            this.bSearch.Location = new System.Drawing.Point(503, 274);
+            this.bSearch.Name = "bSearch";
+            this.bSearch.Size = new System.Drawing.Size(75, 23);
+            this.bSearch.TabIndex = 5;
+            this.bSearch.Text = "Пошук";
+            this.bSearch.UseVisualStyleBackColor = true;
+            this.bSearch.Click += new System.EventHandler(this.bSearch_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(503, 303);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 6;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(636, 379);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.bSearch);
+            this.Controls.Add(this.dgwOpen);
             this.Controls.Add(this.tbInput);
             this.Controls.Add(this.bStart);
             this.Controls.Add(this.label1);
@@ -240,6 +272,7 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgwOpen)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -269,6 +302,9 @@
         private System.Windows.Forms.ToolStripMenuItem проПрограмуToolStripMenuItem;
         private System.Windows.Forms.SaveFileDialog sfdSave;
         private System.Windows.Forms.OpenFileDialog ofdOpen;
+        private System.Windows.Forms.DataGridView dgwOpen;
+        private System.Windows.Forms.Button bSearch;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 
