@@ -34,7 +34,7 @@ namespace Hepalova_IKM620b_3_project
                     return;
                 }
                 Stream S; // створення потоку
-                S = File.Open(this.OpenFileName, FileMode.Open); // зчитування даних зфайлу 
+                S = File.Open(this.OpenFileName, FileMode.Open); // зчитування даних з файлу
                 Buffer D;
                 object O; // буферна змінна для контролю формату
                 BinaryFormatter BF = new BinaryFormatter(); // створення об'єкту для форматування
@@ -43,24 +43,24 @@ namespace Hepalova_IKM620b_3_project
                 System.Data.DataColumn cKey = new
                 System.Data.DataColumn("Ключ");// формуємо колонку "Ключ"
                 System.Data.DataColumn cInput = new
-                System.Data.DataColumn("Вхідні дані");// формуємо колонку "Вхіднідані
+                System.Data.DataColumn("Вхідні дані");// формуємо колонку "Вхідні дані"
                 System.Data.DataColumn cResult = new
                 System.Data.DataColumn("Результат");// формуємо колонку "Результат"
                 MT.Columns.Add(cKey);// додавання ключа
-                MT.Columns.Add(cInput);// додавання вхідних даних
                 MT.Columns.Add(cResult);// додавання результату
+                MT.Columns.Add(cInput);// додавання вхідних даних
                 while (S.Position < S.Length)
                 {
                     O = BF.Deserialize(S); // десеріалізація
                     D = O as Buffer;
                     if (D == null) break;
-                    // Виведення даних на екран
                     System.Data.DataRow MR;
                     MR = MT.NewRow();
                     MR["Ключ"] = D.Key; // Занесення в таблицю номер
-                    MR["Вхідні дані"] = D.Data; // Занесення в таблицю вхіднихданих
-                    MR["Результат"] = D.Result; // Занесення в таблицюрезультатів
+                    MR["Вхідні дані"] = D.Data; // Занесення в таблицю вхідних даних
+                    MR["Результат"] = D.Result; // Занесення в таблицю результатів
                     MT.Rows.Add(MR);
+                    // Виведення даних на екран
                 }
                 DG.DataSource = MT;
                 S.Close(); // закриття
@@ -171,53 +171,56 @@ namespace Hepalova_IKM620b_3_project
         public void NewRec() // новий запис
         {
             this.Data = ""; // "" - ознака порожнього рядка
-            this.Result = null; // для string- null
+            this.Result = default(string); // для string- null
+            this.Key = default(int);
         }
         public void Find(string Num) // пошук
         {
             int N;
             try
             {
-                N = Convert.ToInt16(Num); // перетворення номера рядка в int16 длявідображення
+                N = Convert.ToInt16(Num); // перетворення номера рядка в int16 для відображення
             }
             catch
             {
-                MessageBox.Show("помилка пошукового запиту"); // Виведення наекран повідомлення "помилка пошукового запиту"          
+                MessageBox.Show("помилка пошукового запиту"); // Виведення на екран повідомлення "помилка пошукового запиту"
+
                 return;
             }
             try
             {
                 if (!File.Exists(this.OpenFileName))
                 {
-                    MessageBox.Show("файлу немає"); // Виведення на екран повідомлення "файлу немає"               
+                    MessageBox.Show("файлу немає"); // Виведення на екран повідомлення  "файлу немає"
+
                     return;
                 }
                 Stream S; // створення потоку
                 S = File.Open(this.OpenFileName, FileMode.Open); // відкриття файлу
                 Buffer D;
                 object O; // буферна змінна для контролю формату
-                BinaryFormatter BF = new BinaryFormatter(); // створення об'єкта для форматування            
+                BinaryFormatter BF = new BinaryFormatter(); // створення об'єкта для форматування
                 while (S.Position < S.Length)
                 {
                     O = BF.Deserialize(S);
                     D = O as Buffer;
                     if (D == null) break;
-                    if (D.Key == N) // перевірка дорівнює чи номер пошуку номеру рядка втаблиці
+                    if (D.Key == N) // перевірка дорівнює чи номер пошуку номеру рядка в таблиці
                     {
                         string ST;
-                        ST = "Запис містить:" + (char)13 + "No" + Num + "Вхідні дані:" +
-                        D.Data + "Результат:" + D.Result;
+                        ST = "Запис містить:" + (char)13 + "No" + Num + "Вхідні дані:" + D.Data + "Результат:" + D.Result;
+
                         MessageBox.Show(ST, "Запис знайдена"); // Виведення на екран повідомлення "запис містить", номер, вхідних даних і результат
                         S.Close();
                         return;
                     }
                 }
                 S.Close();
-                MessageBox.Show("Запис не знайдена"); // Виведення на екран повідомлення"Запис не знайдена"
+                MessageBox.Show("Запис не знайдена"); // Виведення на екран повідомлення "Запис не знайдена"
             }
             catch
             {
-                MessageBox.Show("Помилка файлу"); // Виведення на екран повідомлення"Помилка файлу"
+                MessageBox.Show("Помилка файлу"); // Виведення на екран повідомленя "Помилка файлу"
             }
         } // Find закінчився
     }

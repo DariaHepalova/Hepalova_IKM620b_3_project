@@ -103,9 +103,10 @@ namespace Hepalova_IKM620b_3_project
 
         private void відкритиToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (ofdOpen.ShowDialog() == DialogResult.OK) // Виклик діалогового вікна відкриття файлу
-{
-                MessageBox.Show(ofdOpen.FileName);
+            if (ofdOpen.ShowDialog() == DialogResult.OK) // Виклик діалогу відкриття файлу
+            {
+                MajorObject.WriteOpenFileName(ofdOpen.FileName); // відкриттяфайлу 
+                MajorObject.ReadFromFile(dgwOpen); // читання даних з файлу
             }
         }
 
