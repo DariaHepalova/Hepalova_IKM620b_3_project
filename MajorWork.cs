@@ -21,7 +21,10 @@ namespace Hepalova_IKM620b_3_project
         private string OpenFileName;// ім’я файлу для читання
         public bool Modify;
         private int Key;// поле ключа
-
+        public Stack myStack = new Stack();
+        public string[] myArr = new string[100];
+        public Queue myQueue = new Queue();
+        public string[] smyQueue = new string[100];
 
         // Методи     
         public void ReadFromFile(System.Windows.Forms.DataGridView DG) // зчитування з файлу
